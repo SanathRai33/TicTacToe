@@ -44,4 +44,40 @@ body {
 			}
 		}
 	}
+
+	.actualGameContainer {
+		display: flex;
+		flex-direction: column;
+
+		.game-row {
+			display: flex;
+			align-items: center;
+
+			.box {
+				border: 2px solid black;
+				font-size: 8vw;
+				cursor: pointer;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 10vw;
+				height: 10vw;
+			}
+			.box-left {
+				border-left: 0;
+			}
+			.box-right {
+				border-right: 0;
+			}
+			.box-bottom {
+				border-bottom: 0;
+			}
+			.box-top {
+				border-top: 0;
+			}
+			.box:hover {
+				background: #f3e7f9;
+			}
+		}
+	}
 }
