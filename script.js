@@ -1,6 +1,9 @@
 let boxes = document.querySelectorAll('.box');
 let reset = document.querySelector('.reset');
 let turnContainer = document.querySelector('.turn-Details');
+let winModal = document.querySelector('.modal');
+let winMessageContent = document.querySelector('.winMessageContent');
+let playAgain = document.querySelector('.play-again');
 const ting = new Audio('ting.mp3');
 const winAudio = new Audio('gameover.mp3');
 let turn = 'X';
@@ -33,6 +36,11 @@ const checkWin = () => {
 			turnContainer.innerText = `${winner} won`;
 			isGameOver = true;
 			winAudio.play();
+
+			//open the win modal
+			winMessageContent.innerText = `Player ${winner}  Wins! 🎉`;
+			winModal.style.display = 'flex';
+			playAgain.addEventListener('click', resetFunction);
 		}
 	}
 };
@@ -45,15 +53,42 @@ for (let i = 0; i < boxes.length; i++) {
 			turnContainer.innerText = `Turn for ${turn}`;
 			ting.play();
 			checkWin();
+			checkForDraw();
 		}
 	});
 }
 
-reset.addEventListener('click', (e) => {
+const resetFunction = () => {
 	for (let i = 0; i < boxes.length; i++) {
 		boxes[i].innerHTML = '';
 	}
 	turn = 'X';
 	isGameOver = false;
 	turnContainer.innerText = 'Turn for X';
+	winModal.style.display = 'none';
+};
+
+reset.addEventListener('click', () => {
+	resetFunction();
 });
+
+const checkForDraw = () => {
+	let anyBlockSEmpty = false;
+	for (let i = 0; i < boxes.length; i++) {
+		if (boxes[i].innerHTML === '') {
+			anyBlockSEmpty = true;
+			break;
+		}
+	}
+
+	if (anyBlockSEmpty) {
+		return;
+	}
+	//anyBlockSEmpty = false
+	if (!anyBlockSEmpty && !isGameOver) {
+		winMessageContent.innerText = `It's a Draw! 🤝`;
+		winModal.style.display = 'flex';
+		playAgain.addEventListener('click', resetFunction);
+		winAudio.play();
+	}
+};
