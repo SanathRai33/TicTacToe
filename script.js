@@ -10,7 +10,7 @@ let turn = 'X';
 let isGameOver = false;
 
 const changeTurn = () => {
-	turn = turn === 'X' ? '0' : 'X';
+	turn = turn === 'X' ? 'O' : 'X';
 };
 
 const checkWin = () => {
