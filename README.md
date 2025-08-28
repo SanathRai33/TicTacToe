@@ -34,6 +34,13 @@ TicTacToe/
 
 ---
 
+## 📸 Preview
+<img width="1919" height="910" alt="image" src="https://github.com/user-attachments/assets/22a5f84f-7198-442a-8e4a-69f8ba3a00ca" />
+
+**[Live demo](https://sanathrai33.github.io/TicTacToe/)** 
+
+---
+
 ##  How to Play / Run Locally
 
 1. Clone the repo:  
